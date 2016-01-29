@@ -4,6 +4,15 @@
 require('useful-date');
 require('useful-date/locale/en-US.js');
 
+
+
+
+
+
+
+
+
+
 var dossiers = [
     { value: "RECEPTION", label: 'Boite de réception' },
     { value: "ARCHIVES", label: "Archives" },
@@ -61,6 +70,8 @@ exports.genererMails = function() {
 };
 
 
+
+// Json object table
 var tables = {
     RECEPTION: [
         {
@@ -180,13 +191,15 @@ var tables = {
 
 
 
-
-
-
-    exports.getObject = function(req, res) {
+// Export all tables
+exports.getTables = function(req, res) {
     res.send(tables);
-    //res.writeHead(404);
-    //res.end("Not found !");
+};
+
+
+// Export tables names
+exports.getTablesNames = function(req, res) {
+    res.send(Object.getOwnPropertyNames(tables));
 };
 
 

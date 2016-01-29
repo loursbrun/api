@@ -24,8 +24,21 @@ var api = express();
 
 
 // Récupérer l'objet global généré
-// GET /api/dossiers
-api.get("/object", serviceTables.getObject);
+// GET /api/tables
+api.get("/tables", serviceTables.getTables);
+
+
+
+// Récupérer la liste des tables
+// GET /api/tables
+api.get("/tablesNames", serviceTables.getTablesNames);
+
+
+
+
+
+
+
 
 
 // Récupérer la liste des dossiers
