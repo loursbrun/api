@@ -61,8 +61,130 @@ exports.genererMails = function() {
 };
 
 
-exports.getObject = function(req, res) {
-    res.send(emailsParDossier);
+var tables = {
+    RECEPTION: [
+        {
+            id: 1,
+            from: "Coco",
+            to: "Rudy",
+            subject: "Quoi de neuf mon vieux",
+            date: "2016-01-15T11:35:02.492Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 2,
+            from: "Dendé",
+            to: "Rudy",
+            subject: "Yo vieille branche",
+            date: "2016-01-16T13:59:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        }
+    ],
+    ARCHIVES: [
+        {
+            id: 1,
+            from: "Coco",
+            to: "Rudy",
+            subject: "Quoi de neuf mon vieux",
+            date: "2016-01-15T11:35:02.492Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 2,
+            from: "Dendé",
+            to: "Rudy",
+            subject: "Yo vieille branche",
+            date: "2016-01-16T13:59:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        }
+    ],
+    ENVOYES: [
+        {
+            id: 3,
+            from: "Rudy",
+            to: "Boo",
+            subject: "Quoi de neuf tocard",
+            date: "2016-01-16T20:57:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 4,
+            from: "Rudy",
+            to: "Trunks",
+            subject: "Yo grand galopin",
+            date: "2016-01-28T06:05:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 5,
+            from: "Rudy",
+            to: "Kaio Shin",
+            subject: "Ca va mec",
+            date: "2016-01-24T21:28:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 6,
+            from: "Rudy",
+            to: "Maître Kaio",
+            subject: "Ca va vieille branche",
+            date: "2016-01-04T20:46:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        }
+    ],
+    SPAM: [
+        {
+            id: 7,
+            from: "C-16",
+            to: "Rudy",
+            subject: "Ca va mon vieux",
+            date: "2016-01-19T19:31:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 8,
+            from: "Tortue Géniale",
+            to: "Rudy",
+            subject: "Bien ou bien vieille branche",
+            date: "2016-01-22T13:28:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 9,
+            from: "Végéta",
+            to: "Rudy",
+            subject: "What's up vieille branche",
+            date: "2016-01-11T19:39:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 10,
+            from: "C-18",
+            to: "Rudy",
+            subject: "Hello man",
+            date: "2016-01-01T20:41:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        },
+        {
+            id: 11,
+            from: "Tenchinan",
+            to: "Rudy",
+            subject: "Bien ou bien bro",
+            date: "2016-01-17T22:09:02.493Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        }
+    ]
+};
+
+
+
+
+
+
+
+
+    exports.getObject = function(req, res) {
+    res.send(tables);
     //res.writeHead(404);
     //res.end("Not found !");
 };
