@@ -71,11 +71,23 @@ exports.genererMails = function() {
 
 
 
+
+
+
+
+
+// Table API
+
+
+
+
+
 // Json object table
 var tables = {
     RECEPTION: [
         {
             id: 1,
+            params: 'test1',
             from: "Coco",
             to: "Rudy",
             subject: "Quoi de neuf mon vieux",
@@ -84,6 +96,7 @@ var tables = {
         },
         {
             id: 2,
+            params: 'test2',
             from: "Dendé",
             to: "Rudy",
             subject: "Yo vieille branche",
@@ -94,6 +107,7 @@ var tables = {
     ARCHIVES: [
         {
             id: 1,
+            params: 'test3',
             from: "Coco",
             to: "Rudy",
             subject: "Quoi de neuf mon vieux",
@@ -102,6 +116,7 @@ var tables = {
         },
         {
             id: 2,
+            params: 'test4',
             from: "Dendé",
             to: "Rudy",
             subject: "Yo vieille branche",
@@ -112,6 +127,7 @@ var tables = {
     ENVOYES: [
         {
             id: 3,
+            params: 'test5',
             from: "Rudy",
             to: "Boo",
             subject: "Quoi de neuf tocard",
@@ -120,6 +136,7 @@ var tables = {
         },
         {
             id: 4,
+            params: 'test6',
             from: "Rudy",
             to: "Trunks",
             subject: "Yo grand galopin",
@@ -128,6 +145,7 @@ var tables = {
         },
         {
             id: 5,
+            params: 'test7',
             from: "Rudy",
             to: "Kaio Shin",
             subject: "Ca va mec",
@@ -136,6 +154,7 @@ var tables = {
         },
         {
             id: 6,
+            params: 'test8',
             from: "Rudy",
             to: "Maître Kaio",
             subject: "Ca va vieille branche",
@@ -146,6 +165,7 @@ var tables = {
     SPAM: [
         {
             id: 7,
+            params: 'test9',
             from: "C-16",
             to: "Rudy",
             subject: "Ca va mon vieux",
@@ -154,6 +174,7 @@ var tables = {
         },
         {
             id: 8,
+            params: 'test10',
             from: "Tortue Géniale",
             to: "Rudy",
             subject: "Bien ou bien vieille branche",
@@ -162,6 +183,7 @@ var tables = {
         },
         {
             id: 9,
+            params: 'test11',
             from: "Végéta",
             to: "Rudy",
             subject: "What's up vieille branche",
@@ -170,6 +192,7 @@ var tables = {
         },
         {
             id: 10,
+            params: 'test12',
             from: "C-18",
             to: "Rudy",
             subject: "Hello man",
@@ -178,6 +201,7 @@ var tables = {
         },
         {
             id: 11,
+            params: 'test13',
             from: "Tenchinan",
             to: "Rudy",
             subject: "Bien ou bien bro",
@@ -186,8 +210,6 @@ var tables = {
         }
     ]
 };
-
-
 
 
 
@@ -201,6 +223,26 @@ exports.getTables = function(req, res) {
 exports.getTablesNames = function(req, res) {
     res.send(Object.getOwnPropertyNames(tables));
 };
+
+
+
+// Export table params
+exports.getTableParams = function(req, res) {
+
+    var name = req.params.nameTable;
+    res.send(tables[name][0].params);
+};
+
+
+
+
+
+
+// End Table API
+
+
+
+
 
 
 

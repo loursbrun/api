@@ -34,6 +34,11 @@ api.get("/tables", serviceTables.getTables);
 api.get("/tablesNames", serviceTables.getTablesNames);
 
 
+// Récupérer les paramètres d'une table
+// GET /api/tables
+api.get("/tableParams/:nameTable", serviceTables.getTableParams);
+
+
 
 
 

@@ -11,6 +11,7 @@
         RECEPTION: [
             {
                 id: 1,
+                params: 'test1',
                 from: "Coco",
                 to: "Rudy",
                 subject: "Quoi de neuf mon vieux",
@@ -19,6 +20,7 @@
             },
             {
                 id: 2,
+                params: 'test2',
                 from: "Dendé",
                 to: "Rudy",
                 subject: "Yo vieille branche",
@@ -29,6 +31,7 @@
         ARCHIVES: [
             {
                 id: 1,
+                params: 'test3',
                 from: "Coco",
                 to: "Rudy",
                 subject: "Quoi de neuf mon vieux",
@@ -37,6 +40,7 @@
             },
             {
                 id: 2,
+                params: 'test4',
                 from: "Dendé",
                 to: "Rudy",
                 subject: "Yo vieille branche",
@@ -47,6 +51,7 @@
         ENVOYES: [
             {
                 id: 3,
+                params: 'test5',
                 from: "Rudy",
                 to: "Boo",
                 subject: "Quoi de neuf tocard",
@@ -55,6 +60,7 @@
             },
             {
                 id: 4,
+                params: 'test6',
                 from: "Rudy",
                 to: "Trunks",
                 subject: "Yo grand galopin",
@@ -63,6 +69,7 @@
             },
             {
                 id: 5,
+                params: 'test7',
                 from: "Rudy",
                 to: "Kaio Shin",
                 subject: "Ca va mec",
@@ -71,6 +78,7 @@
             },
             {
                 id: 6,
+                params: 'test8',
                 from: "Rudy",
                 to: "Maître Kaio",
                 subject: "Ca va vieille branche",
@@ -81,6 +89,7 @@
         SPAM: [
             {
                 id: 7,
+                params: 'test9',
                 from: "C-16",
                 to: "Rudy",
                 subject: "Ca va mon vieux",
@@ -89,6 +98,7 @@
             },
             {
                 id: 8,
+                params: 'test10',
                 from: "Tortue Géniale",
                 to: "Rudy",
                 subject: "Bien ou bien vieille branche",
@@ -97,6 +107,7 @@
             },
             {
                 id: 9,
+                params: 'test11',
                 from: "Végéta",
                 to: "Rudy",
                 subject: "What's up vieille branche",
@@ -105,6 +116,7 @@
             },
             {
                 id: 10,
+                params: 'test12',
                 from: "C-18",
                 to: "Rudy",
                 subject: "Hello man",
@@ -113,6 +125,7 @@
             },
             {
                 id: 11,
+                params: 'test13',
                 from: "Tenchinan",
                 to: "Rudy",
                 subject: "Bien ou bien bro",
@@ -123,9 +136,15 @@
     };
 
 
+    // Log liste des premières propriétés de l'objet tables
+   // console.log(Object.getOwnPropertyNames(tables));
+
 
     // Log liste des premières propriétés de l'objet tables
-    console.log(Object.getOwnPropertyNames(tables));
+    console.log(tables['RECEPTION'][0].params);
+
+
+
 
 </script>
 
