@@ -60,6 +60,15 @@ exports.genererMails = function() {
     }
 };
 
+
+exports.getObject = function(req, res) {
+    res.send(emailsParDossier);
+    //res.writeHead(404);
+    //res.end("Not found !");
+};
+
+
+
 exports.getDossiers = function(req, res) {
     res.send(dossiers);
     //res.writeHead(404);
