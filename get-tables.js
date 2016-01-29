@@ -213,6 +213,9 @@ var tables = {
 
 
 
+
+
+
 // Export all tables
 exports.getTables = function(req, res) {
     res.send(tables);
@@ -226,12 +229,36 @@ exports.getTablesNames = function(req, res) {
 
 
 
+// Export Content of table
+exports.getTableContent = function(req, res) {
+
+    var name = req.params.nameTable;
+    res.send(tables[name]);
+};
+
+
+
+
 // Export table params
 exports.getTableParams = function(req, res) {
 
     var name = req.params.nameTable;
     res.send(tables[name][0].params);
 };
+
+
+
+// add new table
+exports.sendTableNew = function(req, res) {
+    var dossierEnvoyes = emailsParDossier["ENVOYES"];
+    var mail = "kjbkjbkjbkjbkjbkjb";
+    mail.id = 50;
+    dossierEnvoyes.push(mail);
+
+    idProchainMail++;
+    res.send({ succes: true, email: req.body });
+}
+
 
 
 

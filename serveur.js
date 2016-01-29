@@ -29,14 +29,26 @@ api.get("/tables", serviceTables.getTables);
 
 
 
-// Récupérer la liste des tables
+// Contenu d'une table
 // GET /api/tables
+api.get("/tableContent/:nameTable", serviceTables.getTableContent);
+
+
+
+// Récupérer la liste des tables
+// GET /api/tablesNames/ "nom de la table"
 api.get("/tablesNames", serviceTables.getTablesNames);
+
 
 
 // Récupérer les paramètres d'une table
 // GET /api/tables
 api.get("/tableParams/:nameTable", serviceTables.getTableParams);
+
+
+// Créer une table
+// POST /api/tableNew
+api.post("/newTable", serviceTables.sendTableNew);
 
 
 
@@ -64,6 +76,12 @@ app.use(bodyParser.json());
 // Envoyer un mail
 // POST /api/envoi
 api.post("/envoi", serviceTables.envoiMail);
+
+
+
+
+
+
 app.use("/api", api);
 http.createServer(app).listen(PORT);
 console.log("Serveur démarré sur le port " + PORT);
