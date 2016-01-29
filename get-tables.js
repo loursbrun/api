@@ -214,8 +214,6 @@ var tables = {
 
 
 
-
-
 // Export all tables
 exports.getTables = function(req, res) {
     res.send(tables);
@@ -250,10 +248,23 @@ exports.getTableParams = function(req, res) {
 
 // add new table
 exports.sendTableNew = function(req, res) {
-    var dossierEnvoyes = emailsParDossier["ENVOYES"];
+   /* var dossierEnvoyes = tables["ENVOYES"];
     var mail = "kjbkjbkjbkjbkjbkjb";
     mail.id = 50;
     dossierEnvoyes.push(mail);
+    */
+    tables.coco =[
+        {
+            id: 1,
+            params: 'test1',
+            from: "Coco",
+            to: "Rudy",
+            subject: "Quoi de neuf mon vieux",
+            date: "2016-01-15T11:35:02.492Z",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur elementum leo. Curabitur luctus, magna a tempor sodales, orci velit dictum magna, nec pharetra turpis ante vehicula ante. Sed sed libero suscipit, rutrum ligula vel, tempor lorem. Phasellus pulvinar dolor ac velit porttitor pulvinar. Mauris felis quam, consequat at <b>mauris</b>."
+        }
+    ];
+
 
     idProchainMail++;
     res.send({ succes: true, email: req.body });
